@@ -1,0 +1,127 @@
+\chapter[INTRODUCTION]{Introduction}
+\chaptermark{Introduction}		% http://tex.stackexchange.com/questions/6862/how-can-i-display-a-short-chapter-name-in-the-header-and-a-long-chapter-name-in
+									% todo: check comments for titlesec solution
+%\pagenumbering{arabic}
+\input{Introduction.tex}
+
+\chapter[REVIEW OF RELATED LITERATURE]{Review of Related Literature}
+\chaptermark{Review of Related Literature}
+\input{Related-Literature/related-lit.tex}
+
+\chapter[METHODOLOGY]{Methodology}
+\chaptermark{Methodology}
+\input{Methodology/Methodology.tex}
+
+\chapter[RESULTS AND ANALYSIS]{Results and Analysis}
+\chaptermark{Results and Analysis}
+\input{YomiChaptersMerged.tex}
+
+\chapter[CONCLUSIONS AND RECOMMENDATIONS]{Conclusions and Recommendations}
+\chaptermark{Conclusions and Recommendations}
+\input{Conclusions/main.tex}
+
+
+\clearpage
+
+\iffalse
+% http://tex.stackexchange.com/questions/16032/how-do-i-indent-the-2nd-line-a-long-chapter-name-created-using-the-tocloft-packa
+\setlength{\cftchapnumwidth}{10em}
+\makeatletter
+\patchcmd{\l@part}% <cmd>
+  {21m}% <search>
+  {10em}% <replace>
+  {}{}% <success><failure>
+\makeatother
+\renewcommand{\thepart}{\hbox to 10em{\hfil\Roman{part}}}
+\renewcommand\cftpartnumwidth{12cm}
+\setlength{\cftpartnumwidth}{3em}
+\makeatletter
+\def\l@section{\@dottedtocline{1}{1em}{2em}}
+\makeatother
+\fi
+
+\renewcommand{\thepart}{\textbf{part}\hspace{20em}}
+
+%%%%%%%%%%%%
+
+\ifnotUCFormat
+	\addcontentsline{toc}{chapter}{REFERENCES}
+\else
+	\addcontentsline{toc}{chapter}{\hspace{-2.8em}REFERENCES}
+\fi
+
+\settocdepth{chapter}		% http://tex.stackexchange.com/questions/114341/how-can-i-remove-thebibliography-from-the-table-of-contents-toc
+
+\renewcommand\UrlFont{\normalfont}		% http://tex.stackexchange.com/questions/151110/how-to-fix-the-url-and-doi-font-say-make-it-smaller
+\bibliography{citations}
+
+
+\clearpage
+
+
+% Appendices
+
+\ifnotUCFormat
+	\addtocontents{toc}{\vspace{1em}\hspace{-1.5em}\textbf{APPENDICES}~\hfill\par}
+\else
+	\addtocontents{toc}{\vspace{1em}\hspace{-2.8em}APPENDICES~\hfill\par}
+\fi
+
+\appendix
+
+\ifnotUCFormat
+\else
+\titleformat
+	{\chapter} %command
+	[display] %shape
+	{\center} %format
+	{\textbf{APPENDICES} \\ Appendix \thechapter} % label
+    {-0em} %sep
+	{\bf\MakeUppercase} %before-code
+	[\vspace{-5.0ex}] %after-code
+\fi
+
+\renewcommand{\thechapter} {\Alph{chapter}}
+\rhead{\footnotesize{Appendices }\thepage}
+
+
+
+\input{Appendix/rsb-ts-changes.tex}
+
+\ifnotUCFormat
+\else
+\titleformat
+	{\chapter} %command
+	[display] %shape
+	{\center} %format
+	{Appendix \thechapter} % label
+    {-0em} %sep
+	{\bf\MakeUppercase} %before-code
+	[\vspace{-5.0ex}] %after-code
+\fi
+	
+\input{Appendix/source-code.tex}
+
+\input{Appendix/code-overview.tex}
+
+\chapter[Published Paper: Modified Beat Frequent Pick (MBFP)]{Modified Beat Frequent Pick (MBFP)}
+\input{Predictors.tex}
+
+\chapter[Published Paper: Historical Sequence-based Predictor (HSP)]{Historical Sequence-based Predictor (HSP)}
+\input{2.Predictors/SeqPred.tex}
+
+\input{Appendix/randomness.tex}
+\input{Appendix/future-tech.tex}
+\input{Appendix/video-games.tex}
+
+% https://www.sharelatex.com/learn/Code_listing
+% http://texblog.org/2008/04/02/include-source-code-in-latex-with-listings/
+
+\newpage
+.
+\ifnotUCFormat
+\else
+\dottedcontents{chapter}[1.3em]{\vspace{0.5em}}{1.3em}{1.3em}
+\fi
+
+\addcontentsline{toc}{chapter}{CURRICULUM VITAE~}

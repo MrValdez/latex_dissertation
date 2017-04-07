@@ -1,0 +1,13 @@
+https://www.sharelatex.com/blog/2013/08/06/thesis-series-pt2.html
+http://tex.stackexchange.com/questions/8857/how-to-type-special-accented-letters-in-latex
+http://latex-community.org/forum/viewtopic.php?f=50&t=5602
+http://tex.stackexchange.com/questions/61869/latex-bibtex-not-arranging-citations-by-order-of-appearance
+http://tex.stackexchange.com/questions/23488/making-a-long-table-continue-over-two-columns
+http://tex.stackexchange.com/questions/10535/how-to-force-a-table-into-page-width
+http://tex.stackexchange.com/questions/114341/how-can-i-remove-thebibliography-from-the-table-of-contents-toc
+http://tex.stackexchange.com/questions/103838/converting-text-to-title-case
+http://tex.stackexchange.com/questions/28556/how-to-place-a-float-at-the-top-of-a-floats-only-page
+http://tex.stackexchange.com/questions/94799/how-do-i-color-table-columns-and-rows
+http://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
+http://tex.stackexchange.com/questions/17877/how-to-show-subsections-and-subsubsections-in-toc
+http://tex.stackexchange.com/questions/9707/how-to-left-align-a-table-in-latex
