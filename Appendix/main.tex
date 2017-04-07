@@ -1,22 +1,21 @@
 
-\ifnotUCFormat
-	\addtocontents{toc}{\vspace{1em}\hspace{-1.5em}\textbf{APPENDICES}~\hfill\par}
-\else
+\ifDissertationFormat
 	\addtocontents{toc}{\vspace{1em}\hspace{-2.8em}APPENDICES~\hfill\par}
+\else	
+	\addtocontents{toc}{\vspace{1em}\hspace{-1.5em}\textbf{APPENDICES}~\hfill\par}
 \fi
 
 \appendix
 
-\ifnotUCFormat
-\else
-\titleformat
-	{\chapter} %command
-	[display] %shape
-	{\center} %format
-	{\textbf{APPENDICES} \\ Appendix \thechapter} % label
-    {-0em} %sep
-	{\bf\MakeUppercase} %before-code
-	[\vspace{-5.0ex}] %after-code
+\ifDissertationFormat
+	\titleformat
+		{\chapter} %command
+		[display] %shape
+		{\center} %format
+		{\textbf{APPENDICES} \\ Appendix \thechapter} % label
+	    {-0em} %sep
+		{\bf\MakeUppercase} %before-code
+		[\vspace{-5.0ex}] %after-code
 \fi
 
 \renewcommand{\thechapter} {\Alph{chapter}}
@@ -26,8 +25,7 @@
 
 %\input{}
 
-\ifnotUCFormat
-\else
+\ifDissertationFormat
 	% Change how the title will look
 	\titleformat
 	{\chapter} %command
@@ -41,9 +39,8 @@
 	
 %\input{Appendix/source-code.tex}
 
-\ifnotUCFormat
-\else
-\dottedcontents{chapter}[1.3em]{\vspace{0.5em}}{1.3em}{1.3em}
+\ifDissertationFormat
+	\dottedcontents{chapter}[1.3em]{\vspace{0.5em}}{1.3em}{1.3em}
 \fi
 
 \addcontentsline{toc}{chapter}{CURRICULUM VITAE~}

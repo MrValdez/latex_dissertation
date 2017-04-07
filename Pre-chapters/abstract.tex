@@ -13,9 +13,18 @@
 	% Text no of Pages-> From chap 1 to chapt 5 w/o tables and figures
 	
 	% TODO: programatically figure out the number
-	\item Total No. of Pages: \ifnotUCFormat  \else 212 \fi	%\ref{totPages}
-	\item Text No. of Pages: \ifnotUCFormat   \else 186 %-26 figure pages  %\pageref{TotPages}
-								\fi
+	\item Total No. of Pages: 
+		\ifDissertationFormat
+			212
+		\else
+			\ref{totPages}
+		\fi	
+	\item Text No. of Pages: 
+		\ifDissertationFormat
+			186 %-26 figure pages  
+		\else
+			\pageref{TotPages}
+		\fi
 \end{enumerate}
 
 

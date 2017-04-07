@@ -1,5 +1,16 @@
+\newif\ifDissertationFormat
+\newif\ifAbstractOnly
+
+\DissertationFormatfalse
+\DissertationFormattrue
+
+\AbstractOnlytrue				% create abstract only
+\AbstractOnlyfalse
+
 \input{settings.tex}
 
+%debug mode:
+%\geometry{showframe}
 
 \newcommand{\DissertationFullTitle}         {Exploring the concept of Yomi as an Artificial Intelligence framework: Yomi AI Framework in RoShamBo}
 
@@ -19,94 +30,80 @@
 
 \input{"Pre-chapters/main.tex"}
 
-\ifnotAbstractOnly
-
-\rhead{\footnotesize\capitalisewords{\leftmark}{ }\thepage}
-\renewcommand{\contentsname}{Table of Contents}
-
-%http://tex.stackexchange.com/a/3183/8271
-\renewcommand{\thechapter} {\arabic{chapter}}
-\renewcommand{\thesection} {\arabic{chapter}.\arabic{section}}
-%\renewcommand{\thesubsection}{\thesection \alph{subsection}.}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
-
-\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-%\renewcommand{\thetable}{\thesection.\arabic{table}} %default
-
-\ifnotUCFormat
+\ifAbstractOnly
 \else
-% UC Format:
+	\rhead{\footnotesize\capitalisewords{\leftmark}{ }\thepage}
+	\renewcommand{\contentsname}{Table of Contents}
+	
+	%http://tex.stackexchange.com/a/3183/8271
 	\renewcommand{\thechapter} {\arabic{chapter}}
-	\renewcommand{\thesection} {\hspace{-0.45in}}
-	\renewcommand{\thesubsection}{\hspace{-1em}}
+	\renewcommand{\thesection} {\arabic{chapter}.\arabic{section}}
+	%\renewcommand{\thesubsection}{\thesection \alph{subsection}.}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 	\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+	
+	\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+	\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+	%\renewcommand{\thetable}{\thesection.\arabic{table}} %default
+	
+	\ifDissertationFormat
+		\renewcommand{\thechapter} {\arabic{chapter}}
+		\renewcommand{\thesection} {\hspace{-0.45in}}
+		\renewcommand{\thesubsection}{\hspace{-1em}}
+		\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+	
+		\renewcommand{\thefigure}{\arabic{figure}}
+		\renewcommand{\thetable}{\arabic{table}}
+	\fi
+	
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\rhead{\footnotesize{Table of Contents }\thepage}
+	
+	\tableofcontents
+	
+	\newpage
+	\setcounter{tocdepth}{2}
+	\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+	\renewcommand{\contentsname}{List of Figures}
+	\rhead{\footnotesize{List of Figures }\thepage}
+	\listoffigures 
+	
+	\newpage
+	\addcontentsline{toc}{chapter}{LIST OF TABLES}
+	\chaptermark{List of Tables}
+	\rhead{\footnotesize{List of Tables }\thepage}
+	\listoftables
+	\clearpage
+	
+	\ifDissertationFormat
+		\addtocontents{toc}{\vspace{1em}\hspace{-2.8em}CHAPTER~\hfill\par}
+	\else
+		\addtocontents{toc}{\vspace{1em}}
+	\fi
+	
+	\ifDissertationFormat
+		\contentsuse{figure}{lof}
+		\contentsuse{table}{lot}
+		
+		\titlecontents{chapter}
+			[5.2em]		% left margin
+			{\vspace{1em}}
+			{\contentslabel{2.0em}\hspace{1.7em}}
+			{}
+			{\titlerule*[1.3em]{}}	% dots
+		\titlecontents{chapter}
+		       [3.2em]         % left margin
+		       {\vspace{1em}}          % above code
+		       {\contentspush{\thecontentslabel\hspace{3em}}}           % numbered-entry
+		       {}
+		       {  \titlerule*[1.3em]{.}\contentspage}    % filler page format
+	\fi
+	
+	\addtocontents{toc}{\vspace{-1em}}
+	
+	\rhead{\footnotesize\leftmark{ }\thepage}
+	
+	\input{thesis.tex}
 
-	\renewcommand{\thefigure}{\arabic{figure}}
-	\renewcommand{\thetable}{\arabic{table}}
 \fi
-
-\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
-\rhead{\footnotesize{Table of Contents }\thepage}
-
-\tableofcontents
-
-\newpage
-\setcounter{tocdepth}{2}
-\addcontentsline{toc}{chapter}{LIST OF FIGURES}
-\renewcommand{\contentsname}{List of Figures}
-\rhead{\footnotesize{List of Figures }\thepage}
-\listoffigures 
-
-\newpage
-\addcontentsline{toc}{chapter}{LIST OF TABLES}
-\chaptermark{List of Tables}
-\rhead{\footnotesize{List of Tables }\thepage}
-\listoftables
-\clearpage
-
-\ifnotUCFormat
-	\addtocontents{toc}{\vspace{1em}}
-\else
-	\addtocontents{toc}{\vspace{1em}\hspace{-2.8em}CHAPTER~\hfill\par}
-\fi
-
-\ifnotUCFormat
-\else
-\contentsuse{figure}{lof}
-\contentsuse{table}{lot}
-
-\titlecontents{chapter}
-	[5.2em]		% left margin
-	{\vspace{1em}}
-	{\contentslabel{2.0em}\hspace{1.7em}}
-	{}
-	{\titlerule*[1.3em]{}}	% dots
-\titlecontents{chapter}
-       [3.2em]         % left margin
-       {\vspace{1em}}          % above code
-       {\contentspush{\thecontentslabel\hspace{3em}}}           % numbered-entry
-       {}
-       {  \titlerule*[1.3em]{.}\contentspage}    % filler page format
-
-% for appen?
-%\dottedcontents{subsection}
-%	[5.5em]
-%	{\textbf}
-%	{0em}
-%	{1pc}
-%	{\raggedleft}
-%\contentsmargin{0pt}
-\fi
-
-\addtocontents{toc}{\vspace{-1em}}
-
-\rhead{\footnotesize\leftmark{ }\thepage}
-
-\input{thesis.tex}
-
-\fi
-
-
 \end{document}

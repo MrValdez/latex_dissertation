@@ -1,15 +1,10 @@
-\newif\ifnotUCFormat
-\notUCFormatfalse		% uses UC format for figure/tables/etc
-%\notUCFormattrue
-
-\newif\ifnotAbstractOnly
-\notAbstractOnlyfalse		% create abstract only
-\notAbstractOnlytrue
-
 \documentclass[12pt]{report}			% fontsize
 %\documentclass{acm_proc_article-sp}
 
-\ifnotUCFormat
+\ifDissertationFormat
+	\newcommand{\TableResizeValue}{.92}
+	\newcommand{\TableRankingSummaryValue}{.72}
+\else
 	% accented letters support
 	%  pdfLaTeX:
 	%\usepackage[utf8]{inputenc}
@@ -20,36 +15,29 @@
 
 	\newcommand{\TableResizeValue}{.58}
 	\newcommand{\TableRankingSummaryValue}{.80}
-\else
-	\newcommand{\TableResizeValue}{.92}
-	\newcommand{\TableRankingSummaryValue}{.72}
 \fi
 
-\ifnotUCFormat
+\ifDissertationFormat
+	\usepackage[notocbib]{apacite}
+	\bibliographystyle{apacite}
+\else
 	% arrange citations by order of appearance
 	\usepackage{cite}
 	\usepackage{notoccite}
 	\bibliographystyle{IEEEtran}
-\else
-	\usepackage[notocbib]{apacite}
-	\bibliographystyle{apacite}
 \fi
 
-\ifnotUCFormat
-	% UC margins: Margin left 1.5" top 1.2" right 1" and bottom .8"
-	\usepackage[paperwidth=8.5in, paperheight=11in, width=150mm, left=1.5in, top=1.2in, right=1in, bottom=0.8in]{geometry}
-\else
+\ifDissertationFormat
 	% note: Added 0.1" to bottom margin as LaTeX tries to fill it to 0.8in
 	\usepackage[paperwidth=8.5in, paperheight=11in, width=150mm, left=1.5in, top=1.45in, right=1in, bottom=0.71in]{geometry}
 	\setlength{\headsep}{0.15in}
 	\addtolength\belowcaptionskip{0.3em}			% margins for float set to top
+\else
+	% UC margins: Margin left 1.5" top 1.2" right 1" and bottom .8"
+	\usepackage[paperwidth=8.5in, paperheight=11in, width=150mm, left=1.5in, top=1.2in, right=1in, bottom=0.8in]{geometry}
 \fi
 
-%debug:
-%\geometry{showframe}
-
-\ifnotUCFormat
-\else
+\ifDissertationFormat
 	% use font from current operating system
 
 	\usepackage{fontspec}
@@ -66,27 +54,26 @@
 \usepackage{indentfirst}
 
 \usepackage{setspace}
-\ifnotUCFormat
-\else
-\doublespacing
+\ifDissertationFormat
+	\doublespacing
 \fi
 
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead{}
-\rhead{}
-\lhead{}
-\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
-\renewcommand{\headrulewidth}{0pt}
-%\fancyhead[R]{\leftmark}
-%\fancyhead[RO,LE]{Yomi AI}
-%\fancyhead[LO,CE]{Chapter \thechapter}
-%\fancyhead[LE,RO]{\thepage}
-\fancyfoot{}
-%\fancyfoot[LE,RO]{\thepage}
-%\fancyfoot[LO,CE]{Chapter \thechapter}
-%\fancyfoot[CO,RE]{Sony Estrada Valdez}
-
+	\pagestyle{fancy}
+	\fancyhead{}
+	\rhead{}
+	\lhead{}
+	\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+	\renewcommand{\headrulewidth}{0pt}
+	%\fancyhead[R]{\leftmark}
+	%\fancyhead[RO,LE]{Yomi AI}
+	%\fancyhead[LO,CE]{Chapter \thechapter}
+	%\fancyhead[LE,RO]{\thepage}
+	\fancyfoot{}
+	%\fancyfoot[LE,RO]{\thepage}
+	%\fancyfoot[LO,CE]{Chapter \thechapter}
+	%\fancyfoot[CO,RE]{Sony Estrada Valdez}
+	
 % http://tex.stackexchange.com/questions/30228/custom-first-page-with-fancyhdr
 \fancypagestyle{plain}{
   \fancyhf{}
@@ -109,10 +96,9 @@
 \usepackage{csquotes}
 \usepackage{multicol}
 
-\ifnotUCFormat
-\else
-\usepackage{titlesec}
-\usepackage{titletoc}
+\ifDissertationFormat
+	\usepackage{titlesec}
+	\usepackage{titletoc}
 \fi
 
 % remove bibliography from table of contents
@@ -130,13 +116,12 @@
 % Use title case for titles
 \usepackage{titlecaps}
 
-\ifnotUCFormat
-\else
-% place floats only at top of floating pages
-\makeatletter
-\setlength{\@fptop}{0.5em}
-\setlength{\@fpbot}{0pt plus 1fil}
-\makeatother
+\ifDissertationFormat
+	% place floats only at top of floating pages
+	\makeatletter
+	\setlength{\@fptop}{0.5em}
+	\setlength{\@fpbot}{0pt plus 1fil}
+	\makeatother
 \fi
 
 % http://tex.stackexchange.com/a/24799/8271
@@ -165,12 +150,7 @@
 \allchaptersfalse		% yomi chapters only
 \allchapterstrue		% all chapters
 
-\ifnotUCFormat
-	%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-	\usepackage[colorlinks=true, allcolors=black]{hyperref}
-
-	%\usepackage[flushmargin,hang,multiple]{footmisc}
-\else
+\ifDissertationFormat
 	\usepackage[normalem]{ulem}
 	\usepackage[justification=centering]{caption}
 	\DeclareCaptionTextFormat{UCFormat}{\small\expandafter\uline\expandafter{\expandafter#1}}
@@ -184,10 +164,10 @@
 	% show subsection and subsubsections in table of contents
 	\setcounter{tocdepth}{1}
 
-% http://texblog.org/2011/09/09/10-ways-to-customize-tocloflot/
-% future replacement for package (was it titletoc?)
-%\setcounter{lofdepth}{2}
-%\setcounter{lotdepth}{2}
+	% http://texblog.org/2011/09/09/10-ways-to-customize-tocloflot/
+	% future replacement for package (was it titletoc?)
+	%\setcounter{lofdepth}{2}
+	%\setcounter{lotdepth}{2}
 
 	\renewcommand{\footnote}[1]{ (#1)}
 
@@ -195,6 +175,11 @@
 	\makeatletter
 	\let\old@float\@float
 	\def\@float{\let\centering\relax\old@float}
+\else
+	%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+	\usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+	%\usepackage[flushmargin,hang,multiple]{footmisc}
 \fi
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -233,146 +218,147 @@
 }
 
 
-\ifnotUCFormat
-% http://tex.stackexchange.com/questions/16506/bibliography-author-initial-spacing
-\makeatletter
-\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
-\def\@bstctlcite[#1]#2{\@bsphack
-  \@for\@citeb:=#2\do{%
-    \edef\@citeb{\expandafter\@firstofone\@citeb}%
-    \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
-  \@esphack}
-\makeatother
+\ifDissertationFormat
+\else
+	% http://tex.stackexchange.com/questions/16506/bibliography-author-initial-spacing
+	\makeatletter
+	\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+	\def\@bstctlcite[#1]#2{\@bsphack
+	  \@for\@citeb:=#2\do{%
+	    \edef\@citeb{\expandafter\@firstofone\@citeb}%
+	    \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+	  \@esphack}
+	\makeatother
 \fi
 
-	% http://tex.stackexchange.com/a/109608/8271
-	%  reduce the space before and after the itemization/enumeration
-	% http://tex.stackexchange.com/a/6028/8271
-	%  add paragraph indent to enumerate
-	\usepackage{enumitem}
-\ifnotUCFormat
-	\setlist[enumerate]{leftmargin=0pt, itemindent=4.3em, listparindent=\parindent}
-\else
+% http://tex.stackexchange.com/a/109608/8271
+%  reduce the space before and after the itemization/enumeration
+% http://tex.stackexchange.com/a/6028/8271
+%  add paragraph indent to enumerate
+\usepackage{enumitem}
+\ifDissertationFormat
 	\setlist{nolistsep}
 
 	%\setlist[1]{\labelindent=\parindent}
 	\setlist[enumerate]{leftmargin=0pt, itemindent=4.7em, listparindent=\parindent}
 	\setlist{nolistsep}
+\else
+	\setlist[enumerate]{leftmargin=0pt, itemindent=4.3em, listparindent=\parindent}
 \fi
 
 \begin{document}
-\ifnotUCFormat
+\ifDissertationFormat
+\else
 % http://tex.stackexchange.com/questions/74301/name-of-authors-in-the-references-is-replaced-by-a-dashed-line
 	\bstctlcite{IEEEexample:BSTcontrol}
 \fi
 
-\ifnotUCFormat
-	\renewcommand{\emph}[1]{\textbf{#1}}
+\ifDissertationFormat
+	%\pagenumbering{roman}
+	
+	% Change the margins in lof and lot
+	% http://tex.stackexchange.com/a/33842/8271
+	\renewcommand*\l@figure{\@dottedtocline{2}{3.2em}{3.2em}}
+	\renewcommand*\l@table{\@dottedtocline{2}{3.2em}{3.2em}}
+	
+	% http://tex.stackexchange.com/questions/24454/space-after-float-with-h
+	\setlength{\textfloatsep}{1em}
+	
+	% http://tex.stackexchange.com/questions/58097/section-indent-or-leftmargin
+	
+	\titleformat
+		{\chapter} %command
+		[display] %shape
+		{\center} %format
+		{Chapter \thechapter} % label
+	    {-0em} %sep
+		{\bf\MakeUppercase} %before-code
+		[\vspace{-5.0ex}] %after-code
+	\titlespacing
+		{\chapter} %command
+		{0in} %left
+		{-0.5in} %before-sep
+		{0.5in} %after-sep
+	\titleformat
+		{\section} %command
+		[block] %shape
+		{} %format
+		{} % label
+	    {0em} %sep
+		{\normalsize\bf} %before-code
+		[] %after-code
+	\titlespacing
+		{\section}
+		{0em} %left
+		{0em} %before-sep
+		{0em} %after-sep
+	\titleformat
+		{\subsection} %command
+		[runin] %shape
+		{} %format
+		{\hspace*{\parindent}} % label
+	    {0em} %sep
+		{\uline} %before-code
+		[.] %after-code
+	\titlespacing
+		{\subsection}
+		{0em} %left
+		{0em} %before-sep
+		{0.5em} %after-sep
+	\titleformat
+		{\subsubsection} %command
+		[runin] %shape
+		{} %format
+		{} % label
+	    {0em} %sep
+		{\hspace*{\parindent}} %before-code
+		[. ] %after-code
+	\titlespacing
+		{\subsubsection}
+		{0em} %left
+		{0em} %before-sep
+		{0.5em} %after-sep
+	
+	\contentsmargin[2em]{2em}
+	
+	\titlecontents{section}
+		[6.9em]		% left margin
+		{}
+		{}
+		{}
+		{\titlerule*[1.3em]{.}\contentspage}	% dots
+	
+	\dottedcontents{section}
+		[13.85em]	% left
+		{}		% above code
+		{0}		% label width
+		{0em}	% leader width
+	
+	\dottedcontents{subsection}[5.5em]{}{3.2em}{5pt}
+	
+	\renewcommand{\emph}[1]{\uline{#1}}
+	
+	\renewcommand{\APACciteatitle}[1]{\enquote{#1}}
+	
+	\setlength\parindent{3em}
+	
+	% http://tex.stackexchange.com/questions/24454/space-after-float-with-h
+	\setlength{\textfloatsep}{0.5em} 
 \else
-%\pagenumbering{roman}
-
-% Change the margins in lof and lot
-% http://tex.stackexchange.com/a/33842/8271
-\renewcommand*\l@figure{\@dottedtocline{2}{3.2em}{3.2em}}
-\renewcommand*\l@table{\@dottedtocline{2}{3.2em}{3.2em}}
-
-% http://tex.stackexchange.com/questions/24454/space-after-float-with-h
-\setlength{\textfloatsep}{1em}
-
-% http://tex.stackexchange.com/questions/58097/section-indent-or-leftmargin
-
-\titleformat
-	{\chapter} %command
-	[display] %shape
-	{\center} %format
-	{Chapter \thechapter} % label
-    {-0em} %sep
-	{\bf\MakeUppercase} %before-code
-	[\vspace{-5.0ex}] %after-code
-\titlespacing
-	{\chapter} %command
-	{0in} %left
-	{-0.5in} %before-sep
-	{0.5in} %after-sep
-\titleformat
-	{\section} %command
-	[block] %shape
-	{} %format
-	{} % label
-    {0em} %sep
-	{\normalsize\bf} %before-code
-	[] %after-code
-\titlespacing
-	{\section}
-	{0em} %left
-	{0em} %before-sep
-	{0em} %after-sep
-\titleformat
-	{\subsection} %command
-	[runin] %shape
-	{} %format
-	{\hspace*{\parindent}} % label
-    {0em} %sep
-	{\uline} %before-code
-	[.] %after-code
-\titlespacing
-	{\subsection}
-	{0em} %left
-	{0em} %before-sep
-	{0.5em} %after-sep
-\titleformat
-	{\subsubsection} %command
-	[runin] %shape
-	{} %format
-	{} % label
-    {0em} %sep
-	{\hspace*{\parindent}} %before-code
-	[. ] %after-code
-\titlespacing
-	{\subsubsection}
-	{0em} %left
-	{0em} %before-sep
-	{0.5em} %after-sep
-
-\contentsmargin[2em]{2em}
-
-\titlecontents{section}
-	[6.9em]		% left margin
-	{}
-	{}
-	{}
-	{\titlerule*[1.3em]{.}\contentspage}	% dots
-
-\dottedcontents{section}
-	[13.85em]	% left
-	{}		% above code
-	{0}		% label width
-	{0em}	% leader width
-
-\dottedcontents{subsection}[5.5em]{}{3.2em}{5pt}
-
-\renewcommand{\emph}[1]{\uline{#1}}
-
-\renewcommand{\APACciteatitle}[1]{\enquote{#1}}
-
-\setlength\parindent{3em}
-
-% http://tex.stackexchange.com/questions/24454/space-after-float-with-h
-\setlength{\textfloatsep}{0.5em} 
+	\renewcommand{\emph}[1]{\textbf{#1}}
 \fi
 
 \ifallchapters
 \addtocontents{toc}{~\hfill{Page}\par}
 
-\ifnotUCFormat
-	\addtocontents{lof}{\hspace{-1.4em}Figure No.~\hfill{Page}\par}
-	\addtocontents{lot}{\hspace{-1.4em}Table No.~\hfill{Page}\par}
-\else
+\ifDissertationFormat
 	\addtocontents{lof}{\hspace{-2.8em}Figure No.~\hfill{Page}\par}
 	\addtocontents{lot}{\hspace{-2.8em}Table No.~\hfill{Page}\par}
+\else
+	\addtocontents{lof}{\hspace{-1.4em}Figure No.~\hfill{Page}\par}
+	\addtocontents{lot}{\hspace{-1.4em}Table No.~\hfill{Page}\par}
 \fi
 
-\ifnotUCFormat
-\else
-\dottedcontents{chapter}[1.5em]{}{1.3em}{1.3em}
+\ifDissertationFormat
+	\dottedcontents{chapter}[1.5em]{}{1.3em}{1.3em}
 \fi

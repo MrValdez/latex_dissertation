@@ -4,7 +4,8 @@
 \addcontentsline{toc}{chapter}{APPROVAL SHEET}
 \input{"Pre-chapters/approval.tex"}
 
-\ifnotAbstractOnly
+\ifAbstractOnly
+\else
     \rhead{\footnotesize{Dissertation Abstract }\thepage}
 \fi
 
@@ -18,7 +19,8 @@
 \end{center}
 \input{"Pre-chapters/abstract.tex"}
 
-\ifnotAbstractOnly
+\ifAbstractOnly
+\else
     \addcontentsline{toc}{chapter}{DEDICATION}
     \chapter*{Dedication}
     \input{"Pre-chapters/dedication.tex"}
