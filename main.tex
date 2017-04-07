@@ -6,8 +6,6 @@
 \notAbstractOnlyfalse		% create abstract only
 \notAbstractOnlytrue
 
-%\documentclass{article}
-%\documentclass[12pt,twoside]{report}
 \documentclass[12pt]{report}			% fontsize
 %\documentclass{acm_proc_article-sp}
 
@@ -15,6 +13,8 @@
 	% accented letters support
 	%  pdfLaTeX:
 	%\usepackage[utf8]{inputenc}
+	
+	%  XeLaTeX:
 	\usepackage[T1]{fontenc}
 	\usepackage{lmodern} % load a font with all the characters
 
@@ -28,9 +28,7 @@
 \ifnotUCFormat
 	% arrange citations by order of appearance
 	\usepackage{cite}
-
 	\usepackage{notoccite}
-
 	\bibliographystyle{IEEEtran}
 \else
 	\usepackage[notocbib]{apacite}
@@ -103,12 +101,9 @@
 \usepackage{tabularx}
 
 \usepackage{adjustbox}
-
 \usepackage{moreverb}
-
 \usepackage{totpages}
 \usepackage{enumitem}
-
 \usepackage{listings}
 \usepackage{fixltx2e}
 \usepackage{csquotes}
@@ -383,7 +378,7 @@
 \fi
 
 \addcontentsline{toc}{chapter}{TITLE PAGE}
-\input{titlepage.tex}
+\input{"Pre-chapters/titlepage.tex"}
 
 \newcommand{\DissertationTitle}             {Exploring the concept of Yomi as an Artificial Intelligence framework}
 \newcommand{\FullName}                      {Sony Estrada Valdez}
@@ -391,7 +386,7 @@
 \newcommand{\Keywords}             		    {Artificial Intelligence, Game Theory, Game Strategy, Rock Paper Scissors, RoShamBo, Yomi}
 
 \addcontentsline{toc}{chapter}{APPROVAL SHEET}
-%\input{approval.tex}
+\input{"Pre-chapters/approval.tex"}
 
 \ifnotAbstractOnly
 \rhead{\footnotesize{Dissertation Abstract }\thepage}
@@ -399,41 +394,18 @@
 
 \addcontentsline{toc}{chapter}{ABSTRACT}
 \setcounter{page}{3}
-\input{abstract.tex}
+\input{"Pre-chapters/abstract.tex"}
 
 \ifnotAbstractOnly
 
 \addcontentsline{toc}{chapter}{DEDICATION}
 \chapter*{Dedication}
-
-This is dedicated to all the fighters in the world. Never give up, never surrender.
-
-\begin{flushright}
-\textit{roj, yIn nI' je tISIQ}
-\end{flushright}
+\input{"Pre-chapters/dedication.tex"}
 
 \rhead{\footnotesize{Acknowledgement }\thepage}
-
 \addcontentsline{toc}{chapter}{ACKNOWLEDGEMENT}
 \chapter*{Acknowledgement}
-
-% Thanks to my mother who gave me moral support. \\
-
-Thanks to my adviser and mentor, Dr. Proceso Jon Fernandez of the Ateneo de Manila University, for the support and encouragement. \ifnotUCFormat \\ 
-
-\fi I thank my co-authors, Dr. Generino Siddayao and Dr. Vitruvius John D. Barayuga, for the feedbacks on my first and second published academic papers. To Alvin Malicdem, thank you for helping me in converting this dissertation into publishable papers. It has been a pleasure working with all of you. \ifnotUCFormat \\ \fi
-
-Thanks to my panel members, Dr. Andrei Coronel, Dr. Regina Justina Estuar, Dr. Marlene De Leon, and Dr. Felicito Caluyo. I hope you all enjoyed my defense. \ifnotUCFormat \\ \fi Thank you to Ms. Nancy Flores of the University of the Cordilleras for pushing me to finish my Doctorate. \ifnotUCFormat \\ \fi
-
-Thanks to my grandfather Daddy Tonying, Uncle June Estrada, Ezekiel Bacungan, and Aunt Aurora \enquote{Martha} Mabutas for the financial assistant in publishing my first paper which allowed me travel to Singapore. \ifnotUCFormat \\ \fi
-
-Thanks to all my friends and students who gave me support and cheered for me. I appreciate them for listening to my nonsensical ideas. \ifnotUCFormat \\ \fi
-
-Special thanks to my siblings who carried me when I am in need. Special thanks to the Estrada Clan for growing up with me and influencing each other. \ifnotUCFormat \\ \fi Last, but not least, I am grateful to my family for their love and encouragements. \ifnotUCFormat \\ \fi
-
-\begin{flushright}
-S.E.V.
-\end{flushright}
+\input{"Pre-chapters/acknowledgement.tex"}
 
 \newpage
 \fi

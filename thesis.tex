@@ -1,25 +1,25 @@
 \chapter[INTRODUCTION]{Introduction}
-\chaptermark{Introduction}		% http://tex.stackexchange.com/questions/6862/how-can-i-display-a-short-chapter-name-in-the-header-and-a-long-chapter-name-in
+\chaptermark{Introduction}		% 
 									% todo: check comments for titlesec solution
 %\pagenumbering{arabic}
-\input{Introduction.tex}
+
+\input{"Chapter 1 - Introduction/main.tex"}
 
 \chapter[REVIEW OF RELATED LITERATURE]{Review of Related Literature}
 \chaptermark{Review of Related Literature}
-\input{Related-Literature/related-lit.tex}
+\input{"Chapter 2 - Review of Related Literature/main.tex"}
 
 \chapter[METHODOLOGY]{Methodology}
 \chaptermark{Methodology}
-\input{Methodology/Methodology.tex}
+\input{"Chapter 3 - Methodology/main.tex"}
 
 \chapter[RESULTS AND ANALYSIS]{Results and Analysis}
 \chaptermark{Results and Analysis}
-\input{YomiChaptersMerged.tex}
+\input{"Chapter 4 - Results and Analysis/main.tex"}
 
 \chapter[CONCLUSIONS AND RECOMMENDATIONS]{Conclusions and Recommendations}
 \chaptermark{Conclusions and Recommendations}
-\input{Conclusions/main.tex}
-
+\input{"Chapter 5 - Conclusions and Recommendations/main.tex"}
 
 \clearpage
 
@@ -42,8 +42,6 @@
 
 \renewcommand{\thepart}{\textbf{part}\hspace{20em}}
 
-%%%%%%%%%%%%
-
 \ifnotUCFormat
 	\addcontentsline{toc}{chapter}{REFERENCES}
 \else
@@ -55,73 +53,6 @@
 \renewcommand\UrlFont{\normalfont}		% http://tex.stackexchange.com/questions/151110/how-to-fix-the-url-and-doi-font-say-make-it-smaller
 \bibliography{citations}
 
-
 \clearpage
 
-
-% Appendices
-
-\ifnotUCFormat
-	\addtocontents{toc}{\vspace{1em}\hspace{-1.5em}\textbf{APPENDICES}~\hfill\par}
-\else
-	\addtocontents{toc}{\vspace{1em}\hspace{-2.8em}APPENDICES~\hfill\par}
-\fi
-
-\appendix
-
-\ifnotUCFormat
-\else
-\titleformat
-	{\chapter} %command
-	[display] %shape
-	{\center} %format
-	{\textbf{APPENDICES} \\ Appendix \thechapter} % label
-    {-0em} %sep
-	{\bf\MakeUppercase} %before-code
-	[\vspace{-5.0ex}] %after-code
-\fi
-
-\renewcommand{\thechapter} {\Alph{chapter}}
-\rhead{\footnotesize{Appendices }\thepage}
-
-
-
-\input{Appendix/rsb-ts-changes.tex}
-
-\ifnotUCFormat
-\else
-\titleformat
-	{\chapter} %command
-	[display] %shape
-	{\center} %format
-	{Appendix \thechapter} % label
-    {-0em} %sep
-	{\bf\MakeUppercase} %before-code
-	[\vspace{-5.0ex}] %after-code
-\fi
-	
-\input{Appendix/source-code.tex}
-
-\input{Appendix/code-overview.tex}
-
-\chapter[Published Paper: Modified Beat Frequent Pick (MBFP)]{Modified Beat Frequent Pick (MBFP)}
-\input{Predictors.tex}
-
-\chapter[Published Paper: Historical Sequence-based Predictor (HSP)]{Historical Sequence-based Predictor (HSP)}
-\input{2.Predictors/SeqPred.tex}
-
-\input{Appendix/randomness.tex}
-\input{Appendix/future-tech.tex}
-\input{Appendix/video-games.tex}
-
-% https://www.sharelatex.com/learn/Code_listing
-% http://texblog.org/2008/04/02/include-source-code-in-latex-with-listings/
-
-\newpage
-.
-\ifnotUCFormat
-\else
-\dottedcontents{chapter}[1.3em]{\vspace{0.5em}}{1.3em}{1.3em}
-\fi
-
-\addcontentsline{toc}{chapter}{CURRICULUM VITAE~}
+\input{"Appendix/main.tex"}

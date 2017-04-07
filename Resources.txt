@@ -11,3 +11,7 @@ http://tex.stackexchange.com/questions/94799/how-do-i-color-table-columns-and-ro
 http://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
 http://tex.stackexchange.com/questions/17877/how-to-show-subsections-and-subsubsections-in-toc
 http://tex.stackexchange.com/questions/9707/how-to-left-align-a-table-in-latex
+https://www.sharelatex.com/learn/Code_listing
+http://texblog.org/2008/04/02/include-source-code-in-latex-with-listings/
+http://tex.stackexchange.com/questions/6862/how-can-i-display-a-short-chapter-name-in-the-header-and-a-long-chapter-name-in 
+    (check comments for solution)
