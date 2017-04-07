@@ -1,0 +1,32 @@
+\addcontentsline{toc}{chapter}{TITLE PAGE}
+\input{"Pre-chapters/titlepage.tex"}
+
+\addcontentsline{toc}{chapter}{APPROVAL SHEET}
+\input{"Pre-chapters/approval.tex"}
+
+\ifnotAbstractOnly
+    \rhead{\footnotesize{Dissertation Abstract }\thepage}
+\fi
+
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\setcounter{page}{3}
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+\textbf{DISSERTATION ABSTRACT}
+\end{center}
+\input{"Pre-chapters/abstract.tex"}
+
+\ifnotAbstractOnly
+    \addcontentsline{toc}{chapter}{DEDICATION}
+    \chapter*{Dedication}
+    \input{"Pre-chapters/dedication.tex"}
+
+    \rhead{\footnotesize{Acknowledgement }\thepage}
+    \addcontentsline{toc}{chapter}{ACKNOWLEDGEMENT}
+    \chapter*{Acknowledgement}
+    \input{"Pre-chapters/acknowledgement.tex"}
+
+    \newpage
+\fi

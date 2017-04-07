@@ -1,0 +1,66 @@
+% Abstract should not exceed three pages in length (coupon bond 8 1/2 by 11")
+
+\begin{enumerate}[leftmargin=0em, itemindent=1.8em]
+\item Title: 
+	\begin{minipage}[t]{0.75\textwidth}
+		\vspace{-1.9em}
+		\singlespacing{\DissertationFullTitle}
+		\vspace{0.7em}
+	\end{minipage}
+
+\begin{enumerate}[leftmargin=1.5em,label*=\arabic*.]	
+	% Total No of Pages -> Last Page
+	% Text no of Pages-> From chap 1 to chapt 5 w/o tables and figures
+	
+	% TODO: programatically figure out the number
+	\item Total No. of Pages: \ifnotUCFormat  \else 212 \fi	%\ref{totPages}
+	\item Text No. of Pages: \ifnotUCFormat   \else 186 %-26 figure pages  %\pageref{TotPages}
+								\fi
+\end{enumerate}
+
+
+\item Author: \MakeUppercase{\FullNameFamilyFirst}
+\item Type of Document: Dissertation
+\item Type of Publication: Unpublished
+
+\item Accrediting Institution: 
+	\begin{minipage}[t]{0.5\textwidth}
+		\vspace{-1.9em}
+			\singlespacing{University of the Cordilleras   \\
+					 		 Gov. Pack Road, Baguio City     \\
+					 		 CHED-CAR}
+		\vspace{0.5em}
+	\end{minipage}
+
+\item Sponsor: CHED-FDP
+\item Key words: 
+	\begin{minipage}[t]{0.7\textwidth}
+		\vspace{-1.9em}
+			\singlespacing{\Keywords}
+		\vspace{0.5em}
+	\end{minipage}
+
+\item Abstracts:
+
+\singlespacing{
+	\begin{enumerate}[label*=\arabic*., leftmargin=0em,  listparindent=3em]
+		\item \begin{center}\textbf{Rationale / Background of the Study} \end{center}		
+			\input{"Pre-chapters/abstract - 1. Rationale.tex"}
+			\vspace{1em}
+
+		\item \begin{center}\textbf{Summary}\end{center}		
+			\input{"Pre-chapters/abstract - 2. Summary.tex"}
+			\vspace{1em}
+			
+		\item \begin{center}\textbf{Findings}\end{center}		
+			\input{"Pre-chapters/abstract - 3. Findings.tex"}			
+			\vspace{1em}
+		
+		\item \begin{center}\textbf{Conclusions}\end{center}		
+			\input{"Pre-chapters/abstract - 4. Conclusions.tex"}
+			\vspace{1em}
+
+		\item \begin{center}\textbf{Recommendations}\end{center}
+			\input{"Pre-chapters/abstract - 5. Recommendations.tex"}	
+	}
+\end{enumerate}
